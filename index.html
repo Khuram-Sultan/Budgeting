@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./app.js" defer type="text/javascript"></script>
+    <link rel="stylesheet" href="./budget.css" type="text/css">
+    <title>Budgeting Application</title>
+</head>
+
+<body>
+    <div class="mainWindow">
+        <div class="header">
+            <div class="heading heading1">Welcome to Monthly Budgeting App</div>
+            <div class="menu" id="mainMenu">
+                <div onclick="showBox('addBudget')">Add Budget</div>
+                <div onclick="showBox('addCategory')">Add Category</div>
+                <div onclick="showBox('addExpense'); categoryList('expenseCategory')">Add Expenses</div>
+                <div onclick="expenseList()">List Expenses</div>
+            </div>
+        </div>
+
+        <div class="dataWindow">
+            <div id="">
+                <div class="add boxtheme" id="addBudget">
+                    <div class="heading heading2">Budget</div>
+                    <div><input oninput="validateNumber('monthlyBudget')" class="input inputNum" type="text"
+                            name="budget" id="monthlyBudget"></div>
+                    <div><button onclick="setBudget()" type="submit" name="submit" id="submitBudget">Set Budget</button>
+                    </div>
+                </div>
+            </div>
+            <div id="">
+                <div class="addExpense boxtheme" id="addExpense">
+                    <div class="heading heading2">Add Expenses</div>
+                    <table>
+                        <tr>
+                            <td>Date : </td>
+                            <td><input type="date" name="date" id="expenseDate" class="input"></td>
+                        </tr>
+                        <tr>
+                            <td>Expense : </td>
+                            <td><input onblur="checkBudget('expenseAmount')" oninput="validateNumber('expenseAmount')"
+                                    class="input inputNum" type="text" name="expenseAmount" id="expenseAmount"></td>
+                        </tr>
+                        <tr>
+                            <td>Description : </td>
+                            <td><input type="text" class="input" name="description" id="expenseDescription"></td>
+                        </tr>
+                        <tr>
+                            <td>Category: </td>
+                            <td><select id="expenseCategory" name="Utility Bill"></select></td>
+                        </tr>
+                    </table>
+                    <div class="buttonCenter"><button onclick="addExpense()" type="submit" name="submit"
+                            id="addExpenseButton">Add Expense</button></div>
+                </div>
+            </div>
+            <div id="">
+                <div class="addExpense boxtheme" id="editExpense">
+                    <div class="heading heading2">Edit Expenses</div>
+                    <table>
+                        <tr>
+                            <td>Date : </td>
+                            <td><input type="date" name="date" id="editExpenseDate" class="input"></td>
+                        </tr>
+                        <tr>
+                            <td>Expense : </td>
+                            <td><input onblur="checkBudget('editExpenseAmount')"
+                                    oninput="validateNumber('editExpenseAmount')" class="input inputNum" type="text"
+                                    name="editExpenseAmount" id="editExpenseAmount"></td>
+                        </tr>
+                        <tr>
+                            <td>Description : </td>
+                            <td><input type="text" class="input" name="description" id="editExpenseDescription"></td>
+                        </tr>
+                        <tr>
+                            <td>Category: </td>
+                            <td><select id="editExpenseCategory"></select></td>
+                        </tr>
+                    </table>
+                    <div class="buttonCenter"><button onclick="editExpense()" type="submit" name="submit"
+                            id="EditExpenseButton">Update Expense</button></div>
+                </div>
+            </div>
+            <div id="">
+                <div class="add boxtheme" id="addCategory">
+                    <div class="heading heading2">Add New Category</div>
+                    <div><input class="input" type="text" name="category" id="addNewCategory"></div>
+                    <div class="buttonCenter"><button onclick="addCategory()" type="submit" name="submit"
+                            id="submitBudget">Add</button></div>
+                </div>
+            </div>
+            <div id="showExpenseBox"></div>
+        </div>
+    </div>
+    <div class="footer boxtheme">
+        <div class="menu">
+            <div>Total Budget</div>
+            <div>Expenses</div>
+            <div>Balance</div>
+        </div>
+        <div class="menu">
+            <div id="budget">0</div>
+            <div id="expense">0</div>
+            <div id="balance">0</div>
+        </div>
+    </div>
+</body>
+</html>
